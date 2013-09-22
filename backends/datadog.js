@@ -56,13 +56,12 @@ var flush_stats = function datadog_post_stats(ts, metrics) {
    // Send counters
    for (key in counters) {
       value = counters[key];
-      // XXX: Send this too like the graphite backend?
       var valuePerSecond = value / (flushInterval / 1000); // calculate "per second" rate
 
       payload.push({
          metric: key,
-         points: [[ts, value]],
-         type: "counter",
+         points: [[ts, valuePerSecond]],
+         type: "gauge",
          host: host
       });
    }
@@ -156,6 +155,7 @@ var backend_status = function datadog_status(writeCb) {
 
 exports.init = function datadog_init(startup_time, config, events) {
    debug = config.debug;
+    
 
    hostname = config.hostname;
 
