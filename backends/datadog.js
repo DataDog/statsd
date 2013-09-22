@@ -32,7 +32,6 @@ var post_stats = function datadog_post_stats(payload) {
       new Datadog(datadogApiKey, { api_host: datadogApiHost }).metrics(payload);
 
       datadogStats.last_flush = Math.round(new Date().getTime() / 1000);
-      util.log("Datadog <- " + payload);
    } catch(e){
       if (debug) {
          util.log(e);

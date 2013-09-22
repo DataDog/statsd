@@ -67,7 +67,6 @@ Datadog.prototype._post = function(controller, message) {
 
    req.write(body);
    req.end();
-   util.log("Send data to Datadog: " + body);
 };
 
 module.exports = Datadog;

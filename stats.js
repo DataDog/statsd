@@ -248,7 +248,6 @@ config.configFile(process.argv[2], function (config, oldConfig) {
       });
 
       stream.on('data', function(data) {
-        util.log("(S): " + data);
         var cmdline = data.trim().split(" ");
         var cmd = cmdline.shift();
 
